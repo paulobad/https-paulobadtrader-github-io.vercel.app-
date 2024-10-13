@@ -1,0 +1,57 @@
+:root {
+    --gradient-start: #4a00e0;
+    --gradient-end: #8e2de2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+header img {
+    height: 50px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+main {
+    padding: 2rem;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.texto {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+}

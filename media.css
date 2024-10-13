@@ -1,0 +1,36 @@
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    nav a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .subtitulo {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .subtitulo {
+        font-size: 1rem;
+    }
+
+    .texto {
+        font-size: 0.9rem;
+    }
+}
