@@ -1,33 +1,34 @@
-from bs4 import BeautifulSoup
 import os
+from bs4 import BeautifulSoup
 
-# Read the existing HTML file
-with open('index.html', 'r', encoding='utf-8') as file:
-    soup = BeautifulSoup(file, 'html.parser')
+def update_html_file(file_name, title, main_content):
+    with open(file_name, 'r', encoding='utf-8') as file:
+        soup = BeautifulSoup(file, 'html.parser')
 
-# Function to create or update a section
-def create_or_update_section(id, title, image_path, image_alt):
-    section = soup.find('section', id=id)
-    if not section:
-        section = soup.new_tag('section', id=id)
-        soup.main.append(section)
-    
-    section.clear()
-    
-    h2 = soup.new_tag('h2')
-    h2.string = title
-    section.append(h2)
-    
-    img = soup.new_tag('img', src=image_path, alt=image_alt, **{'class': f'{id}-image'})
-    section.append(img)
+    # Update title
+    soup.title.string = f"{title} - EDGARD TRADER AND DEVELOPER"
 
-# Update or create sections
-create_or_update_section('profile', 'Profile', 'path/to/image1.jpg', 'Profile picture')
-create_or_update_section('trading', 'Trading Expertise', 'path/to/image2.jpg', 'Trading concept')
-create_or_update_section('analytics', 'Analytics Dashboard', 'path/to/image3.jpg', 'Analytics dashboard')
+    # Update main content
+    main = soup.find('main')
+    main.clear()
+    h1 = soup.new_tag('h1')
+    h1.string = main_content
+    main.append(h1)
 
-# Save the modified HTML
-with open('index.html', 'w', encoding='utf-8') as file:
-    file.write(str(soup.prettify()))
+    with open(file_name, 'w', encoding='utf-8') as file:
+        file.write(str(soup.prettify()))
 
-print("HTML file has been updated with the new images.")
+# Update all pages
+pages = [
+    ('index.html', 'Home', 'Welcome to Edgard Trader and Developer'),
+    ('skills.html', 'Skills', 'My Skills'),
+    ('projects.html', 'Projects', 'My Projects'),
+    ('about.html', 'About', 'About Me'),
+    ('contact.html', 'Contact', 'Contact Me'),
+    ('download.html', 'Download', 'Downloads')
+]
+
+for page in pages:
+    update_html_file(*page)
+
+print("HTML files have been updated.")
